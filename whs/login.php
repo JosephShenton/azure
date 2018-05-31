@@ -48,10 +48,6 @@
 
   <body class="text-center">
     <form class="form-signin" method="POST">
-      <br>
-      <br>
-      <br>
-      <br>
       <?php if ($hasError): ?>
         <div class="alert alert-danger">
           <strong>Error!</strong> <?php echo $errorMSG; ?>
