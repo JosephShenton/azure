@@ -155,7 +155,7 @@ ini_set('display_startup_errors', 0);
                 $start = $start_time[1];
                 $end_time = explode(date('Y')." ", $class['period_end']);
                 $end = $end_time[1];
-                $day = explode(" ", $class['period_start'])[0];
+                $day = date("D", strtotime($class['period_start']));
                 $teacher = $class['teacher'];
                 $period = $class['period'];
                 $room = $class['room'];
