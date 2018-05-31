@@ -28,6 +28,8 @@ ini_set('display_startup_errors', 0);
 
   $timetable = array_values($timetable);
 
+  $fullTimetable = json_decode(Timetable::getTimetableJSON($_SESSION['username'], $_SESSION['password']) , true);
+
   // if (Timetable::isWeekend(time())) {
   //     $timetable = '[
   //     {
@@ -104,6 +106,44 @@ ini_set('display_startup_errors', 0);
       <div class="starter-template">
         <h1>Today's Timetable</h1>
         <p class="lead">These are your current classes.</p>
+        <center>
+          <div class="row">
+            <?php 
+              $used = array();
+            ?>
+            <?php foreach ($timetable as $key => $class): ?>
+              <?php 
+                $start_time = explode(date('Y')." ", $class['period_start']);
+                $start = $start_time[1];
+                $end_time = explode(date('Y')." ", $class['period_end']);
+                $end = $end_time[1];
+                $teacher = $class['teacher'];
+                $period = $class['period'];
+                $room = $class['room'];
+                $classInfo = explode(": ", $class['class']);
+                $classNumber = $classInfo[0];
+                $className = $classInfo[1];
+              ?>
+              <div class="col">
+                <div class="card" style="width: 18rem;">
+                  <div class="card-img-top" style="background-image: url('images/<?php echo $period; ?>.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center center;" alt="Card image cap"></div>
+                  <div class="card-body">
+                    <h5 class="card-title"><?php echo $className; ?></h5>
+                    <p class="card-text"><?php echo $teacher; ?></p>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Period: <?php echo $period; ?></li>
+                    <li class="list-group-item">Room: <?php echo $room; ?></li>
+                    <li class="list-group-item"><?php echo $start; ?> - <?php echo $end; ?></li>
+                  </ul>
+                </div>
+              </div>
+            <?php endforeach ?>
+          </div>
+        </center>
+        <br><br><br>
+        <h1>Full Timetable</h1>
+        <p class="lead">This is your full timetable for the next two terms.</p>
         <center>
           <div class="row">
             <?php 
