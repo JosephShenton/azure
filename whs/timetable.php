@@ -149,7 +149,7 @@ ini_set('display_startup_errors', 0);
             <?php 
               $used = array();
             ?>
-            <?php foreach ($timetable as $key => $class): ?>
+            <?php foreach ($fullTimetable as $key => $class): ?>
               <?php 
                 $start_time = explode(date('Y')." ", $class['period_start']);
                 $start = $start_time[1];
