@@ -32,8 +32,8 @@ ini_set('display_startup_errors', 0);
 
   function date_compare($a, $b)
   {
-      $t1 = strtotime($a['period_start']);
-      $t2 = strtotime($b['period_start']);
+      $t1 = strtotime(explode(" ", $a['period_start']));
+      $t2 = strtotime(explode(" ", $b['period_start']));
       return $t1 - $t2;
   }    
   usort($fullTimetable, 'date_compare');
