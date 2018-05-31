@@ -173,7 +173,7 @@ ini_set('display_startup_errors', 0);
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">Period: <?php echo $period; ?></li>
                     <li class="list-group-item">Room: <?php echo $room; ?></li>
-                    <li class="list-group-item">$day | <?php echo $start; ?> - <?php echo $end; ?></li>
+                    <li class="list-group-item"><?php echo $day; ?> | <?php echo $start; ?> - <?php echo $end; ?></li>
                   </ul>
                 </div>
               </div>
