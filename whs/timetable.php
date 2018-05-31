@@ -155,6 +155,7 @@ ini_set('display_startup_errors', 0);
                 $start = $start_time[1];
                 $end_time = explode(date('Y')." ", $class['period_end']);
                 $end = $end_time[1];
+                $day = $start_time[0];
                 $teacher = $class['teacher'];
                 $period = $class['period'];
                 $room = $class['room'];
@@ -172,7 +173,7 @@ ini_set('display_startup_errors', 0);
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">Period: <?php echo $period; ?></li>
                     <li class="list-group-item">Room: <?php echo $room; ?></li>
-                    <li class="list-group-item"><?php echo $start; ?> - <?php echo $end; ?></li>
+                    <li class="list-group-item">$day | <?php echo $start; ?> - <?php echo $end; ?></li>
                   </ul>
                 </div>
               </div>
