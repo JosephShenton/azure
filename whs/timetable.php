@@ -30,6 +30,14 @@ ini_set('display_startup_errors', 0);
 
   $fullTimetable = json_decode(Timetable::getTimetableJSON($_SESSION['username'], $_SESSION['password']) , true);
 
+  function date_compare($a, $b)
+  {
+      $t1 = strtotime($a['period_start']);
+      $t2 = strtotime($b['period_start']);
+      return $t1 - $t2;
+  }    
+  usort($fullTimetable, 'date_compare');
+
   // if (Timetable::isWeekend(time())) {
   //     $timetable = '[
   //     {
@@ -155,7 +163,7 @@ ini_set('display_startup_errors', 0);
                 $start = $start_time[1];
                 $end_time = explode(date('Y')." ", $class['period_end']);
                 $end = $end_time[1];
-                $day = date("l", strtotime($class['period_start']));
+                $day = date("D", strtotime($class['period_start']));
                 $teacher = $class['teacher'];
                 $period = $class['period'];
                 $room = $class['room'];
